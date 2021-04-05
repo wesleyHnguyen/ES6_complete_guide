@@ -1,0 +1,45 @@
+Why need promise?
+The situation that we have a long running operation and we want to access the 
+result of that operation
+-- sometime we have to wait a long running operation to finish  to access that.
+ -- 'then'
+
+
+ *********************************************
+ 3 States of Promises:
+    -- 'unresolved' waiting for something to finish.
+    -- 'resolved' something finished and it all went OK.
+    -- 'rejected' something finished and something went bad.
+
+Promise
+-- --Everything worked out --> status: 'resolved' --then--> Callback
+-- -- something bad happened --> status: 'rejected' --catch --> callback
+
+const promise = new Promise(() => {
+
+});
+
+
+--> decide when the promise is resolved or rejected -> 2 arguments -- resolve and reject
+-- if resolve() is called, it turns the promise into resolved state - 'fullfilled'
+-- if reject() is called, it turns the promise into rejected state
+   --> if promise is rejected, we need to handle it in some fashion.
+
+   ***************** Then and Catch *****************
+   -- use then() and catch() to register callback.
+   -- both of them return a promise --> we can chain multiple 'then' or catch
+
+   const promise = new Promise((resolve, reject) => {
+   resolve();
+});
+
+promise
+    .then(() => {
+    console.log('finally finished');
+})
+    .then(() => {})
+    .catch(() => {}) // run if promise state is rejected (reject() function is called)
+
+--> Notice: when use fetch() to make ajax request, only case that the promise goes to rejected state 
+ -- is it not get committed with the server.
+-- if it can communicate with the server, but the route is not there -> not catch and return unhadle error

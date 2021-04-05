@@ -1,0 +1,128 @@
+// Capturing arguments with Rest and Spread
+
+addNumbers(1,2,3,4,5,6,7,8); -- addNumbers([ 1,2,3,4,5,6,7,8 ]) - 
+--> pass a list of arguments as a single array with unknown number of elements
+
+*******************************************
+*********** Spread Operator ****************
+use case:
+const defaultColors = ['red', 'green'];
+const userFavorites = ['orage', 'yellows'];
+const fallColors = ['fire red', 'fall orange'];
+
+['blue', ...fallColors ,...defaultColors, ... userFavorites]
+-- concat three arrays -- add one or more things at the beginning all **every where**
+
+
+function validateShoppingList(...items) {
+    if (items.indexOf('milk') < 0) {
+        ** return ['milk', ...items];** if no milk in the list, add milk to the list.
+    }
+
+}
+
+validateShoppingList('oranges', 'bread', 'egg')
+
+** Use case: when to define a function but don't know the number of arguments - 
+    // pass through anothe function
+
+    const MathLibrary = {
+    calculateProduct(...rest) {
+        console.log('Please use the multiply method instead');
+
+       ***  return this.multiply(...rest); ***
+    },
+    multiply(a, b) {
+        return a * b;
+    }
+}
+
+
+*************************************************************
+************* Destructuring**********************************
+const { type, amount } = expense; 
+variable names must be identical to the properties of the object expense.
+
+
+************ Destructuring argument objects *****************
+
+var savedFile = {
+    extension: 'jpg',
+    name: 'repost',
+    size: 14040
+};
+
+function fileSummary( { name, extension, size } ) {
+
+    return `The file ${name}.${extension} is of size ${size}`;
+
+}
+-- fileSummary(savedFile);
+
+***********************************************************
+****** Destructuring Array*******************************
+const companies = [
+    'Google',
+    'Facebook',
+    'Uber'
+];
+
+- Destructuring objects: pull of properties.
+- Destructuring arrays: pull of individual element
+
+const [name1, name2, name3] = companies; // name1: Google, name2: 'Facebook'
+
+
+-- const { length } = companies // OK, array is also an object and it has a property called length
+
+-- use with 'rest' operator:
+const [name, ...rest] = companies
+
+************************************************************
+***************** Destructuring arrays and objects**********
+const companies = [
+    {name: 'Google', location: 'Mountain View'},
+    {name: 'Facebook', location: 'Menlo Park'},
+    {name: 'Uber', location: 'San Francisco'},
+];
+
+const [ { location } ]  = companies;
+-- Destructuring from outside to inside
+    -- 1. destructuring the array and store it to the location variable -> return the first object
+    -- 2. destructuring the object - receive from above - for the location property and store it to the *location* variable
+    --> do it all at one line of code.
+
+    const Google = {
+        locations: ['Mountain View', 'New York', 'London']
+    };
+
+    const {locations: [location]} = Google; -- destructuring object *need property*.
+
+************************** destructuring use cases ****************
+-- long arguments list - issues: order of the arguments
+    --> instead pass a list of arguments -> pass a object instead
+
+    const user = {
+        username: 'alison',
+        password: 'password',
+        email: 'alison@gmail.com',
+        dateOfBirth: '3/5/1982',
+        city: 'New York'
+    };
+
+    function signup( { username, password, email, dateOfBirth, city } ) { }
+
+********************************************************************
+const points = [
+    [4, 5],
+    [10, 1],
+    [0, 40],
+];
+
+points.map(([ x, y ]) => { return { x ,y } })
+
+**********************************************************************
+
+
+ 
+

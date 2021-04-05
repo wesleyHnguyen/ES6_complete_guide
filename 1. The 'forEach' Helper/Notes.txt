@@ -1,0 +1,21 @@
+********************************************************************
+************************1. Array Helper Methods ********************
+
+forEach    map    filter    find     every    some   reduce
+
+-- Stay away from for loop.
+var colors = ['red', 'blue', 'green'];
+
+colors.forEach(function(color){
+	console.log(color);
+});
+
+function adder(number) {
+    sum += number;
+}
+
+// Loop over the array, incrementing the sum variable
+numbers.forEach(adder); // pass the iterator function - not invoke it
+
+-- why use forEach: Reduce alot of boilerplate for loop.
+

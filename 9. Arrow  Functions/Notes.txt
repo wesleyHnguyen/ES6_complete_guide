@@ -1,0 +1,68 @@
+-- Implicit return: one line expression
+    
+    const add = (a, b) => a + b;
+
+********************************************
+** Advanced Use of Arrow Functions **
+- if there is only one single argument : 
+const double = (number) => 2 * number;
+
+--->    const double = number => 2 * number;
+
+**********************************************
+what far arrow functions really solve?
+
+
+const team = {
+    members: ['Jane', 'Bill'],
+    teamName: 'Super Squad',
+    teamSummary: function() {
+        return this.members.map(function(member) {
+            return `${member} is on team ${this.teamName}`;
+        });
+    }
+};
+
+team.teamSummary(); // throw error: Cannot read property 'teamName' of undefined
+
+--> this - variable is undefined?  not    'team'?
+
+- when never we pass a function to another function - 'this' is lost
+- solution: 
+    -- 1:
+    teamSummary: function() {
+        return this.members.map(function(member) {
+            return `${member} is on team ${this.teamName}`;
+        }.*bind(this)*);
+    } 
+    -- 2:
+    teamSummary: function() {
+        **const self = this;**
+        return this.members.map(function(member) {
+            return `${member} is on team ${self.teamName}`;
+        });
+    }
+
+    -- 3: use lexical 'this': - this == surround context (function)
+
+const team = {
+    members: ['Jane', 'Bill'],
+    teamName: 'Super Squad',
+    teamSummary: function() {
+        return this.members.map(**(member) => {**
+            return `${member} is on team ${this.teamName}`;
+        });
+    }
+};
+
+team.teamSummary();
+
+-- explain: we define the anonymous function inside  teamSummary function 
+    -- so lexical this of the function == teamSummary 'this' by calling teamSummary then this == team
+
+    -- if we change teamSummary: () => this.members.map(..);
+        -- get error property 'members' of undefined -- 
+        -- why? 
+        // this = global because the function that it is in, 
+        // ** is not defined in any execution context**  
+    

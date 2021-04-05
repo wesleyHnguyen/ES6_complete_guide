@@ -1,0 +1,28 @@
+------------------ every ---------------------
+-- If every return true -> things.every(iteratorFunction) -> return true
+-- if any of thing make iteratorFunction return false -> return false
+
+true && false && true && true - 'every'
+
+********************** some *********************
+-- logic: true || false || true || true || false = true
+
+At least one thing return true -> true
+
+
+******************************* every practice ****************
+function Field(value) {
+    this.value = value;
+}
+
+Field.prototype.validate = function() {
+    return this.value.length > 0;
+}
+
+var username = new Field('smth');
+
+var fields = [username, password, birthdate];
+
+var formIsValid = fields.every(function(field) {
+    return field.validate();
+})

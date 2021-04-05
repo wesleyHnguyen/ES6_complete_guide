@@ -1,0 +1,5 @@
+-- find(interatorFunction) -> the interatorFunction must return a boolean value
+-- The find() function return (stop) immediately the first value if the interatorFunction return true
+-- so we don't have to interate the whole array -- similar to for - 'break'
+
+-- 

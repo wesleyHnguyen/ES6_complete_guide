@@ -1,0 +1,6 @@
+********************************************
+** Variable Declarations with Const and Let **
+-- No longer use 'var' for variable declarations but const/let instead
+
+********************************************
+What const and let solve?

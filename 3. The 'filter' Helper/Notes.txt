@@ -1,0 +1,27 @@
+var products = [
+    {name: 'cucumber', type: 'vegetable', quantity: 0, price: 1},
+    {name: 'banana', type: 'fruit', quantity: 10, price: 15},
+    {name: 'celery', type: 'vegetable', quantity: 30, price: 8},
+    {name: 'orange', type: 'fruit', quantity: 3, price: 5}
+];
+
+var filtered = products.filter((product) => product.type === 'fruit');
+
+the iterator function must return a boolean value:
+-- if truthly the value is stored to the new array, otherwise ignore
+
+
+
+// Type is 'vegetable', quantity is greater than 0, price is less than 10
+products.filter(function(product){
+	return product.type === 'vegetable' && product.quantity > 0 && product.price < 10;
+});
+
+
+
+
+// function commentsForPost(post, comments) {
+//     return comments.filter(function(comment) {
+//         return comment.postId === post.id;
+//     })
+// }

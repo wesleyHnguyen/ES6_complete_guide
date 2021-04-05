@@ -1,0 +1,18 @@
+-- Don't mutate the array
+
+var numbers = [1, 2, 3, 4, 5];
+var doubleNumbers = [];
+
+for (var i = 0; i < numbers.length; i++) {
+    doubleNumbers.push(numbers[i]);
+}
+Or
+
+// This create a total new array and add the return value from the
+// iterator function to that array
+// Remember to 'return' value
+var doubled = numbers.map(number => number * 2);
+doubled
+
+// Use case from front end: Get list from database -> add some <html tag>
+// to that data.
